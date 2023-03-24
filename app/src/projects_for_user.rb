@@ -24,8 +24,8 @@ class ProjectsForUser
 
   def user_on_project?(project)
     users = project.project_users
-    return true if users.empty?
-    return true if @user.super_user
+    # return true if users.empty? #no access if userlist empty
+    # return true if @user.super_user #superuser no access
     users.map(&:user_id).include? @user.id
   end
 end

@@ -23,7 +23,7 @@ class ProjectsController < ProjectsBaseController
       team: current_user.team,
       public_feed: params[:visibility] == 'Public'
     )
-
+    ProjectUser.create(project: project, user_id: current_user.id) #creator of project is on project team when created
     flash[:success] = 'Project created'
     return redirect_to dashboard_path
   end

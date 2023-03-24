@@ -44,16 +44,16 @@ RSpec.describe UserPermissionToProject do
             user.update(super_user: true)
           end
 
-          it "returns true" do
-            expect(subject.run).to eq(true)
+          it "returns false" do
+            expect(subject.run).to eq(false)  #superusers cannot access, only project team members
           end
         end
       end
     end
 
     context "when the project DOES NOT have a specific user list" do
-      it "returns true" do
-        expect(subject.run).to eq(true)
+      it "returns false" do
+        expect(subject.run).to eq(false) #admin team should not have access
       end
     end
   end
